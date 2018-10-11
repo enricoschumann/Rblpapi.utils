@@ -24,8 +24,7 @@ Maintainer: \packageMaintainer{Rblpapi.utils}
 %% }
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
+the Rblpapi package \url{https://cran.r-project.org/package=Rblpapi}
 }
 \examples{
 ## TODO
