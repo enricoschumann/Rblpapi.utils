@@ -1,0 +1,14 @@
+Package: Rblpapi.utils
+Type: Package
+Title: Utilities that Rely on the Rblpapi Package
+Version: 0.0-1
+Date: 2018-10-11
+Maintainer: Enrico Schumann <es@enricoschumann.net>
+Authors@R: person(given = "Enrico", family = "Schumann", 
+                  role  = c("aut", "cre"),
+                  email = "es@enricoschumann.net",
+		  comment = c(ORCID = "0000-0001-7601-6576"))
+Description: Functions for specific data retrievals,
+    relying on the functionality provided by the Rblpapi package.
+License: GPL-3
+Depends: Rblpapi, PMwR
