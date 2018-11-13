@@ -1,0 +1,5 @@
+v0.1-0  (????-??-??; not yet released)
+
+  o initial version: provides functions 'port',
+    'hist_series', and 'price_unit'
+
