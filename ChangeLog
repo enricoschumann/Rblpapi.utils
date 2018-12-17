@@ -1,0 +1,4 @@
+2018-12-17  Enrico Schumann  <es@enricoschumann.net>
+
+	* R/functions.R (hist_id): add function
+

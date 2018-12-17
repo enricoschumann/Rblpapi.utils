@@ -172,3 +172,15 @@ port <- function(portfolio, when = NULL) {
     p$Position[cash] <- 1000*p$Position[cash]
     p
 }
+
+hist_id <- function(ticker, when = Sys.Date()) {
+
+    when <- format(when, "%Y%m%d")
+    h.id <- bdp(ticker,
+                "HISTORICAL_ID_POINT_TIME",
+                overrides = c(HISTORICAL_ID_TM_RANGE_START_DT = when))
+    ans <- trimws(h.id[[1]])
+    names(ans) <- ticker
+    ans[ans == ""] <- NA
+    ans    
+} 
