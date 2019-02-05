@@ -184,3 +184,18 @@ hist_id <- function(ticker, when = Sys.Date()) {
     ans[ans == ""] <- NA
     ans    
 } 
+
+index_weights <- function(ticker,
+                          when = Sys.Date(),
+                          strict = FALSE) {
+
+    when <- format(as.Date(when), "%Y%m%d")
+    names(when) <- if (strict)
+                       "END_DATE_OVERRIDE"
+                   else
+                       "END_DT"
+        
+    bds(ticker, "INDX_MWEIGHT_HIST",
+        overrides = when)
+
+}

@@ -1,1 +1,6 @@
 exportPattern("^[[:alpha:]]+")
+
+importFrom(zoo, zoo)
+importFrom(fastmatch, fmatch)
+
+importFrom(Rblpapi, bdh, bdp, getPortfolio)

@@ -1,3 +1,7 @@
+2019-02-05  Enrico Schumann  <es@enricoschumann.net>
+
+	* R/functions.R (index_weights): add function
+
 2018-12-17  Enrico Schumann  <es@enricoschumann.net>
 
 	* R/functions.R (hist_id): add function
