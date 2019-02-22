@@ -53,9 +53,11 @@ price_unit <- function(ticker, currency = "CHF") {
                         class = "data.frame",
                         row.names = c(NA, -2L))
 
-hist_prices <- function(ticker,
+hist_series <- function(ticker,
                         start, end = Sys.Date() - 1,
-                        adjust.return = NULL, return.class = "zoo") {
+                        field = "PX_LAST",
+                        adjust.return = NULL,
+                        return.class = "zoo") {
 
     oticker <- ticker <- trimws(ticker)
     nt <- length(ticker)
@@ -114,7 +116,7 @@ hist_prices <- function(ticker,
     ticker <- tolower(ticker)
 
     if (is.null(adjust.return))
-        field <- "PX_LAST"
+        NULL
     else if (tolower(adjust.return) ==  "net")
         field <- "TOT_RETURN_INDEX_NET_DVDS"
     else if (tolower(adjust.return) ==  "gross")
