@@ -201,3 +201,22 @@ index_weights <- function(ticker,
         overrides = when)
 
 }
+
+revenue_breakdown <- function(ticker,
+                              by = c("region", "product"),
+                              hierarchy.level = 1) {
+
+    by <- by[1L]
+    overrides <- c(NUMBER_OF_PERIODS  = 1,
+                   PG_HIERARCHY_LEVEL = hierarchy.level)
+    if (by == "region")
+        overrides <- c(overrides,
+                       PRODUCT_GEO_OVERRIDE = "G")
+    else if (by == "product")
+        overrides <- c(overrides,
+                       PRODUCT_GEO_OVERRIDE = "P")
+    else
+       stop("unknown 'by'")
+
+    bds(ticker, "PG_REVENUE", overrides = overrides)
+}
