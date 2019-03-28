@@ -1,12 +1,17 @@
+2019-03-28  Enrico Schumann  <es@enricoschumann.net>
+
+        * R/functions.R (revenue_breakdown): set period to -1
+        (hist_id, index_weights, revenue_breakdown): autoconnect
+
 2019-03-26  Enrico Schumann  <es@enricoschumann.net>
 
-	* R/functions.R (revenue_breakdown): add function
+        * R/functions.R (revenue_breakdown): add function
 
 2019-02-05  Enrico Schumann  <es@enricoschumann.net>
 
-	* R/functions.R (index_weights): add function
+        * R/functions.R (index_weights): add function
 
 2018-12-17  Enrico Schumann  <es@enricoschumann.net>
 
-	* R/functions.R (hist_id): add function
+        * R/functions.R (hist_id): add function
 

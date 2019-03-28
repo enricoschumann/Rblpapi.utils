@@ -177,6 +177,8 @@ port <- function(portfolio, when = NULL) {
 
 hist_id <- function(ticker, when = Sys.Date()) {
 
+    .connect()
+
     when <- format(when, "%Y%m%d")
     h.id <- bdp(ticker,
                 "HISTORICAL_ID_POINT_TIME",
@@ -190,6 +192,8 @@ hist_id <- function(ticker, when = Sys.Date()) {
 index_weights <- function(ticker,
                           when = Sys.Date(),
                           strict = FALSE) {
+
+    .connect()
 
     when <- format(as.Date(when), "%Y%m%d")
     names(when) <- if (strict)
@@ -206,8 +210,9 @@ revenue_breakdown <- function(ticker,
                               by = c("region", "product"),
                               hierarchy.level = 1) {
 
+
     by <- by[1L]
-    overrides <- c(NUMBER_OF_PERIODS  = 1,
+    overrides <- c(NUMBER_OF_PERIODS  = -1,
                    PG_HIERARCHY_LEVEL = hierarchy.level)
     if (by == "region")
         overrides <- c(overrides,
@@ -218,5 +223,6 @@ revenue_breakdown <- function(ticker,
     else
        stop("unknown 'by'")
 
+    .connect()
     bds(ticker, "PG_REVENUE", overrides = overrides)
 }
