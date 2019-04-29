@@ -1,3 +1,7 @@
+2019-04-29  Enrico Schumann  <es@enricoschumann.net>
+
+	* R/functions.R (vwap): add function
+
 2019-03-28  Enrico Schumann  <es@enricoschumann.net>
 
         * R/functions.R (revenue_breakdown): set period to -1

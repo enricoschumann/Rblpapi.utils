@@ -186,8 +186,8 @@ hist_id <- function(ticker, when = Sys.Date()) {
     ans <- trimws(h.id[[1]])
     names(ans) <- ticker
     ans[ans == ""] <- NA
-    ans    
-} 
+    ans
+}
 
 index_weights <- function(ticker,
                           when = Sys.Date(),
@@ -200,7 +200,7 @@ index_weights <- function(ticker,
                        "END_DATE_OVERRIDE"
                    else
                        "END_DT"
-        
+
     bds(ticker, "INDX_MWEIGHT_HIST",
         overrides = when)
 
@@ -225,4 +225,24 @@ revenue_breakdown <- function(ticker,
 
     .connect()
     bds(ticker, "PG_REVENUE", overrides = overrides)
+}
+
+vwap <- function(ticker, start, end,
+                 field = "EQY_WEIGHTED_AVG_PX",
+                 ...) {
+
+    .connect()
+
+    start <- as.POSIXct(start)
+    end   <- as.POSIXct(end)
+
+    tmp <- bdp(ticker, field,
+               overrides = c(VWAP_START_TIME = format(start, "%H:%M"),
+                             VWAP_END_TIME   = format(end, "%H:%M"),
+                             VWAP_START_DT   = format(start, "%Y%m%d"),
+                             VWAP_END_DT = format(start, "%Y%m%d")),
+               ...)
+    ans <- tmp[[1L]]
+    names(ans) <- row.names(tmp)
+    ans
 }
