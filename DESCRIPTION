@@ -2,7 +2,7 @@ Package: Rblpapi.utils
 Type: Package
 Title: Utilities that Build on the Rblpapi Package
 Version: 0.0-1
-Date: 2019-04-29
+Date: 2019-12-11
 Maintainer: Enrico Schumann <es@enricoschumann.net>
 Authors@R: person(given = "Enrico", family = "Schumann",
                   role  = c("aut", "cre"),

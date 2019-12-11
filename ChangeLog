@@ -1,6 +1,14 @@
+2019-12-11  Enrico Schumann  <es@enricoschumann.net>
+
+        * R/functions.R (hist_id,hist_ticker): rename function
+        hist_id => hist_ticker
+	(hist_ticker): the function now checks whether
+	the ticker has been reassigned, or the ticker
+	has simply changed
+
 2019-04-29  Enrico Schumann  <es@enricoschumann.net>
 
-	* R/functions.R (vwap): add function
+        * R/functions.R (vwap): add function
 
 2019-03-28  Enrico Schumann  <es@enricoschumann.net>
 

@@ -78,7 +78,7 @@ hist_series <- function(ticker,
     ## ALL tickers are like 'ABC Curncy' (i.e. cash).
     ##
     ## ==> create matrix of 1s and exit
-    if (all(substr(oticker, 1, 3) == substr(oticker, 4, 6)) || 
+    if (all(substr(oticker, 1, 3) == substr(oticker, 4, 6)) ||
         all(grepl("^[a-z][a-z][a-z] Curncy$",
                   oticker, ignore.case = TRUE))) {
         ans <- array(1, dim = c(2, nt))
@@ -175,7 +175,7 @@ port <- function(portfolio, when = NULL) {
     p
 }
 
-hist_id <- function(ticker, when = Sys.Date()) {
+hist_ticker <- function(ticker, when = Sys.Date(), composite.exchange = TRUE) {
 
     .connect()
 
@@ -186,6 +186,25 @@ hist_id <- function(ticker, when = Sys.Date()) {
     ans <- trimws(h.id[[1]])
     names(ans) <- ticker
     ans[ans == ""] <- NA
+    ans[!is.na(ans)] <- paste(ans[!is.na(ans)], "Equity")
+
+    ##
+    same <- tolower(ans) == tolower(ticker)
+    if (any(same)) {
+        stat <- bdp(ticker[same], "MARKET_STATUS")[[1]]
+        tkch <- stat == "TKCH"
+        if (any(tkch)) {
+            new.ticker <- bdp(ticker[same][tkch],
+                              c("EQY_PRIM_SECURITY_TICKER",
+                                if (composite.exchange)
+                                    "EQY_PRIM_SECURITY_COMP_EXCH"
+                                else
+                                    "EQY_PRIM_SECURITY_PRIM_EXCH"
+                                ))
+            new.ticker <- paste(new.ticker[[1]], new.ticker[[2]], "Equity")
+            ans[same][tkch] <- new.ticker
+        }
+    }
     ans
 }
 
