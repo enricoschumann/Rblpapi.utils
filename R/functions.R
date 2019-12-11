@@ -189,7 +189,7 @@ hist_ticker <- function(ticker, when = Sys.Date(), composite.exchange = TRUE) {
     ans[!is.na(ans)] <- paste(ans[!is.na(ans)], "Equity")
 
     ##
-    same <- tolower(ans) == tolower(ticker)
+    same <- !is.na(ans) & tolower(ans) == tolower(ticker)
     if (any(same)) {
         stat <- bdp(ticker[same], "MARKET_STATUS")[[1]]
         tkch <- stat == "TKCH"
