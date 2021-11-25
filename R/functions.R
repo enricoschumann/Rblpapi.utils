@@ -57,7 +57,8 @@ hist_series <- function(ticker,
                         start, end = Sys.Date() - 1,
                         field = "PX_LAST",
                         adjust.return = NULL,
-                        return.class = "zoo") {
+                        return.class = "zoo",
+                        options = NULL, overrides = NULL) {
 
     oticker <- ticker <- trimws(ticker)
     nt <- length(ticker)
@@ -125,7 +126,8 @@ hist_series <- function(ticker,
         stop(sQuote("adjust.return"), " may be: NULL, net, gross")
 
     tmp <- bdh(unique(ticker), fields = field,
-               start.date = start, end.date = end)
+               start.date = start, end.date = end,
+               options = options, overrides = overrides)
     if (length(unique(ticker)) == 1L) {
         tmp <- list(tmp)
         names(tmp) <- unique(ticker)
