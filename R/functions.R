@@ -79,7 +79,8 @@ hist_series <- function(ticker,
     ## ALL tickers are like 'ABC Curncy' (i.e. cash).
     ##
     ## ==> create matrix of 1s and exit
-    if (all(substr(oticker, 1, 3) == substr(oticker, 4, 6)) ||
+    if (all(substr(oticker, 1, 3) == substr(oticker, 4, 6),
+            grepl("Curncy$", oticker)) ||
         all(grepl("^[a-z][a-z][a-z] Curncy$",
                   oticker, ignore.case = TRUE))) {
         ans <- array(1, dim = c(2, nt))

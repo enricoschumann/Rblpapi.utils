@@ -1,3 +1,9 @@
+2022-11-29  Enrico Schumann  <es@enricoschumann.net>
+
+        * R/functions.R (hist_series): make check for
+        "special" currencies, such as "USDUSD Curncy",
+        more stringent
+
 2021-11-25  Enrico Schumann  <es@enricoschumann.net>
 
         * R/functions.R (hist_series): add arguments
@@ -31,4 +37,3 @@
 2018-12-17  Enrico Schumann  <es@enricoschumann.net>
 
         * R/functions.R (hist_id): add function
-
