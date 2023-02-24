@@ -178,11 +178,12 @@ port <- function(portfolio, when = NULL) {
     p
 }
 
-hist_ticker <- function(ticker, when = Sys.Date(), composite.exchange = TRUE) {
+hist_ticker <- function(ticker, when = Sys.Date(),
+                        composite.exchange = TRUE) {
 
     .connect()
 
-    when <- format(when, "%Y%m%d")
+    when <- format(as.Date(when), "%Y%m%d")
     h.id <- bdp(ticker,
                 "HISTORICAL_ID_POINT_TIME",
                 overrides = c(HISTORICAL_ID_TM_RANGE_START_DT = when))
@@ -202,7 +203,7 @@ hist_ticker <- function(ticker, when = Sys.Date(), composite.exchange = TRUE) {
                                 if (composite.exchange)
                                     "EQY_PRIM_SECURITY_COMP_EXCH"
                                 else
-                                    "EQY_PRIM_SECURITY_PRIM_EXCH"
+                                    "ORIG_PRIM_EXCH_CODE"
                                 ))
             new.ticker <- paste(new.ticker[[1]], new.ticker[[2]], "Equity")
             ans[same][tkch] <- new.ticker

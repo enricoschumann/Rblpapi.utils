@@ -1,3 +1,13 @@
+2023-02-24  Enrico Schumann  <es@enricoschumann.net>
+
+        * R/functions.R (hist_ticker): coerce "when" to Date,
+        like in "index_weights" (i.e. character of format
+        "YYYY-mm-dd" works, too)
+        (hist_ticker): if composite.exchange if FALSE, use field
+	"ORIG_PRIM_EXCH_CODE", which seems to return useful
+	values more often than "EQY_PRIM_SECURITY_PRIM_EXCH"
+
+
 2022-11-29  Enrico Schumann  <es@enricoschumann.net>
 
         * R/functions.R (hist_series): make check for
